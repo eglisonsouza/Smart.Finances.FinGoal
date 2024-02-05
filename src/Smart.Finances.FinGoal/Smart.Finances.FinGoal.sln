@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Finances.FinGoal.Api", "Smart.Finances.FinGoal.Api\Smart.Finances.FinGoal.Api.csproj", "{FE85E22B-C688-4A8C-9CB4-FA7F8E631C7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.Finances.FinGoal.Api", "Smart.Finances.FinGoal.Api\Smart.Finances.FinGoal.Api.csproj", "{FE85E22B-C688-4A8C-9CB4-FA7F8E631C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Finances.FinGoal.Core", "Smart.Finances.FinGoal.Core\Smart.Finances.FinGoal.Core.csproj", "{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FE85E22B-C688-4A8C-9CB4-FA7F8E631C7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE85E22B-C688-4A8C-9CB4-FA7F8E631C7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE85E22B-C688-4A8C-9CB4-FA7F8E631C7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
