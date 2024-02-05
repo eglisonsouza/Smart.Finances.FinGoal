@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Smart.Finances.FinGoal.Api"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Finances.FinGoal.Core", "Smart.Finances.FinGoal.Core\Smart.Finances.FinGoal.Core.csproj", "{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Finances.FinGoal.Infra", "Smart.Finances.FinGoal.Infra\Smart.Finances.FinGoal.Infra.csproj", "{1FBEF16C-F693-4F0E-9BD1-6695898DA7FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEF346F8-CFCD-46B3-9079-46D79F7CDA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FBEF16C-F693-4F0E-9BD1-6695898DA7FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FBEF16C-F693-4F0E-9BD1-6695898DA7FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FBEF16C-F693-4F0E-9BD1-6695898DA7FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FBEF16C-F693-4F0E-9BD1-6695898DA7FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
