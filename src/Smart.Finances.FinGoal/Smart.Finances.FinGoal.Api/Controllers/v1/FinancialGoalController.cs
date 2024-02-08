@@ -1,19 +1,16 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Add;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Delete;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Get;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Update;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Get;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus.Commands;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.UpdateStatus.Commands;
 
 namespace Smart.Finances.FinGoal.Api.Controllers.v1
 {
-    [ApiController]
     [Route("api/v1/financial-goal")]
-    public class FinancialGoalController(IMediator mediator) : ControllerBase
+    public class FinancialGoalController(IMediator mediator) : BaseController(mediator)
     {
-        private readonly IMediator _mediator = mediator;
-
         [HttpPost]
         public async Task<IActionResult> PostAsync(AddFinancialGoalCommand command)
         {
