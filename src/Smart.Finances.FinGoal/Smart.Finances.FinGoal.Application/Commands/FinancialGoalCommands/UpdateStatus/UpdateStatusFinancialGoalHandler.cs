@@ -3,7 +3,6 @@ using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateSt
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels;
 using Smart.Finances.FinGoal.Core.Exceptions;
 using Smart.Finances.FinGoal.Core.Models.Entities;
-using Smart.Finances.FinGoal.Core.Models.Enuns;
 using Smart.Finances.FinGoal.Core.Repositories;
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus
@@ -27,8 +26,6 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Upda
         public async Task<FinancialGoalViewModels> Handle(CompletedFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
-            if (entity!.Status.Equals(FinancialGoalStatus.Cancelled))
-                throw new StatusCannotBeCanceledException();
             entity!.Completed();
             return await ExecuteAsync(entity);
         }
@@ -36,8 +33,6 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Upda
         public async Task<FinancialGoalViewModels> Handle(HoldFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
-            if (entity!.Status.Equals(FinancialGoalStatus.Cancelled))
-                throw new StatusCannotBeCanceledException();
             entity!.Hold();
             return await ExecuteAsync(entity);
         }
@@ -45,8 +40,6 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Upda
         public async Task<FinancialGoalViewModels> Handle(BackFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
-            if (entity!.Status.Equals(FinancialGoalStatus.Cancelled))
-                throw new StatusCannotBeCanceledException();
             entity!.Back();
             return await ExecuteAsync(entity);
         }

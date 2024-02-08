@@ -1,4 +1,5 @@
-﻿using Smart.Finances.FinGoal.Core.Models.Enuns;
+﻿using Smart.Finances.FinGoal.Core.Exceptions;
+using Smart.Finances.FinGoal.Core.Models.Enuns;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Smart.Finances.FinGoal.Core.Models.Entities
@@ -25,6 +26,8 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
 
         public void Update(string name, decimal goalAmount, decimal? idealMonthySaving)
         {
+            ValidateStatus();
+
             Update();
             Name = name;
             GoalAmount = goalAmount;
@@ -33,21 +36,25 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
 
         public void Cancell()
         {
+            UpdateStatus();
             Status = FinancialGoalStatus.Cancelled;
         }
 
         public void Hold()
         {
+            UpdateStatus();
             Status = FinancialGoalStatus.OnHold;
         }
 
         public void Completed()
         {
+            UpdateStatus();
             Status = FinancialGoalStatus.Completed;
         }
 
         public void Back()
         {
+            UpdateStatus();
             Status = FinancialGoalStatus.InProgress;
         }
 
@@ -59,6 +66,18 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
         private static DateTime? ValidateDeadLine(DateTime? deadline)
         {
             return deadline!.Equals(DateTime.MinValue) ? null : deadline;
+        }
+
+        private void UpdateStatus()
+        {
+            ValidateStatus();
+            Update();
+        }
+
+        private void ValidateStatus()
+        {
+            if (Status.Equals(FinancialGoalStatus.Cancelled))
+                throw new StatusCannotBeCanceledException();
         }
     }
 }
