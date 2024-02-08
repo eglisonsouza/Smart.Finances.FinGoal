@@ -8,46 +8,45 @@ using Smart.Finances.FinGoal.Core.Repositories;
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus
 {
     public class UpdateStatusFinancialGoalHandler(IFinancialGoalRepository repository) :
-        IRequestHandler<CancellFinancialGoalCommand, FinancialGoalViewModels>,
-        IRequestHandler<CompletedFinancialGoalCommand, FinancialGoalViewModels>,
-        IRequestHandler<HoldFinancialGoalCommand, FinancialGoalViewModels>,
-        IRequestHandler<BackFinancialGoalCommand, FinancialGoalViewModels>
+        IRequestHandler<CancellFinancialGoalCommand, FinancialGoalViewModel>,
+        IRequestHandler<CompletedFinancialGoalCommand, FinancialGoalViewModel>,
+        IRequestHandler<HoldFinancialGoalCommand, FinancialGoalViewModel>,
+        IRequestHandler<BackFinancialGoalCommand, FinancialGoalViewModel>
     {
-
         private readonly IFinancialGoalRepository _repository = repository;
 
-        public async Task<FinancialGoalViewModels> Handle(CancellFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(CancellFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
             entity!.Cancell();
             return await ExecuteAsync(entity);
         }
 
-        public async Task<FinancialGoalViewModels> Handle(CompletedFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(CompletedFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
             entity!.Completed();
             return await ExecuteAsync(entity);
         }
 
-        public async Task<FinancialGoalViewModels> Handle(HoldFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(HoldFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
             entity!.Hold();
             return await ExecuteAsync(entity);
         }
 
-        public async Task<FinancialGoalViewModels> Handle(BackFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(BackFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await GetEntity(request.Id);
             entity!.Back();
             return await ExecuteAsync(entity);
         }
 
-        private async Task<FinancialGoalViewModels> ExecuteAsync(FinancialGoal entity)
+        private async Task<FinancialGoalViewModel> ExecuteAsync(FinancialGoal entity)
         {
             _repository.Update(entity);
-            return FinancialGoalViewModels.FromEntity(entity);
+            return FinancialGoalViewModel.FromEntity(entity);
         }
 
         private Task<FinancialGoal?> GetEntity(Guid id)

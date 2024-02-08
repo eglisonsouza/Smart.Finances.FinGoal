@@ -39,7 +39,7 @@ namespace Smart.Finances.FinGoal.Infra.Persistence.Repositories.Base
             return await _dbSet.FindAsync(id!);
         }
 
-        public async Task<List<TEntity>> GetAllAsync()
+        public async Task<IList<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }

@@ -4,14 +4,14 @@ using Smart.Finances.FinGoal.Core.Repositories;
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add
 {
-    public class AddFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<AddFinancialGoalCommand, FinancialGoalViewModels>
+    public class AddFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<AddFinancialGoalCommand, FinancialGoalViewModel>
     {
         private readonly IFinancialGoalRepository _repository = repository;
 
-        public async Task<FinancialGoalViewModels> Handle(AddFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(AddFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await _repository.AddAsync(request.ToEntity());
-            return FinancialGoalViewModels.FromEntity(entity);
+            return FinancialGoalViewModel.FromEntity(entity);
         }
     }
 }

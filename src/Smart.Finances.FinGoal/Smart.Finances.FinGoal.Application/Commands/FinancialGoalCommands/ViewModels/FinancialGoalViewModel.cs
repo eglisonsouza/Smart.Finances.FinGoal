@@ -3,11 +3,11 @@ using Smart.Finances.FinGoal.Core.Models.Entities;
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels
 {
-    public class FinancialGoalViewModels : FinancialGoalBase
+    public class FinancialGoalViewModel : FinancialGoalBase
     {
         public Guid Id { get; set; }
 
-        public FinancialGoalViewModels(Guid id, string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving)
+        public FinancialGoalViewModel(Guid id, string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving)
         {
             Id = id;
             Name = name;
@@ -16,9 +16,9 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.View
             IdealMonthySaving = idealMonthySaving;
         }
 
-        public static FinancialGoalViewModels FromEntity(FinancialGoal entity)
+        public static FinancialGoalViewModel FromEntity(FinancialGoal entity)
         {
-            return new FinancialGoalViewModels
+            return new FinancialGoalViewModel
                 (
                     id: entity.Id,
                     name: entity.Name,
@@ -26,6 +26,11 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.View
                     deadline: entity.Deadline,
                     idealMonthySaving: entity.IdealMonthySaving
                 );
+        }
+
+        public static IList<FinancialGoalViewModel> FromEntity(IList<FinancialGoal> entities)
+        {
+            return entities.Select(FromEntity).ToList();
         }
     }
 }

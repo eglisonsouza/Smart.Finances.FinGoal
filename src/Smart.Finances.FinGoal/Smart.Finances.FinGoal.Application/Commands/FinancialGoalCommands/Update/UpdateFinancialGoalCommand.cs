@@ -4,7 +4,7 @@ using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewMode
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update
 {
-    public class UpdateFinancialGoalCommand : FinancialGoalBase, IRequest<FinancialGoalViewModels>
+    public class UpdateFinancialGoalCommand : FinancialGoalBase, IRequest<FinancialGoalViewModel>
     {
         public Guid Id { get; set; }
     }

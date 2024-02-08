@@ -7,5 +7,6 @@ namespace Smart.Finances.FinGoal.Core.Repositories
         Task<FinancialGoal> AddAsync(FinancialGoal entity);
         FinancialGoal Update(FinancialGoal entity);
         Task<FinancialGoal?> GetById(Guid id);
+        Task<IList<FinancialGoal>> GetAllAsync();
     }
 }

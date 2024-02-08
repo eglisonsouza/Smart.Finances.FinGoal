@@ -3,7 +3,7 @@ using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewMode
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete
 {
-    public class DeleteFinancialGoalCommand(Guid id) : IRequest<FinancialGoalViewModels>
+    public class DeleteFinancialGoalCommand(Guid id) : IRequest<FinancialGoalViewModel>
     {
         public Guid Id { get; set; } = id;
     }

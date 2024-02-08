@@ -5,16 +5,16 @@ using Smart.Finances.FinGoal.Core.Repositories;
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete
 {
-    public class DeleteFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<DeleteFinancialGoalCommand, FinancialGoalViewModels>
+    public class DeleteFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<DeleteFinancialGoalCommand, FinancialGoalViewModel>
     {
         private readonly IFinancialGoalRepository _repository = repository;
 
-        public async Task<FinancialGoalViewModels> Handle(DeleteFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(DeleteFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await _repository.GetById(request.Id) ?? throw new EntityNotFoundException();
             entity.Deleted();
             _repository.Update(entity);
-            return FinancialGoalViewModels.FromEntity(entity);
+            return FinancialGoalViewModel.FromEntity(entity);
         }
     }
 }

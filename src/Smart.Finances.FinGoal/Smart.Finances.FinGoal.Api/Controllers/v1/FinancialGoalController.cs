@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Get;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus.Commands;
 
@@ -47,6 +48,12 @@ namespace Smart.Finances.FinGoal.Api.Controllers.v1
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             return Ok(await _mediator.Send(new DeleteFinancialGoalCommand(id)));
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAsync()
+        {
+            return Ok(await _mediator.Send(new GetAllFinancialGoalCommand()));
         }
     }
 }
