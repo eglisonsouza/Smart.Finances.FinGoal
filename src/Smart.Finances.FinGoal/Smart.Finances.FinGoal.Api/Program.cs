@@ -1,5 +1,5 @@
 using Smart.Finances.FinGoal.Application.Extensions;
-using Smart.Finances.FinGoal.Infra.Persistence.Extensions;
+using Smart.Finances.FinGoal.Infra.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

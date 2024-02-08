@@ -4,7 +4,7 @@ using Smart.Essentials.EFCore;
 using Smart.Finances.FinGoal.Core.Repositories;
 using Smart.Finances.FinGoal.Infra.Persistence.Configuration;
 using Smart.Finances.FinGoal.Infra.Persistence.Repositories;
-namespace Smart.Finances.FinGoal.Infra.Persistence.Extensions
+namespace Smart.Finances.FinGoal.Infra.Extensions
 {
     public static class InfraExtensions
     {
