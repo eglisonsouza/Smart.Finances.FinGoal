@@ -18,6 +18,8 @@ namespace Smart.Finances.FinGoal.Infra.Persistence.Extensions
         public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IFinancialGoalRepository, FinancialGoalRepository>();
+            services.AddScoped<ITransactionOperationRepository, TransactionOperationRepository>();
+
             return services;
         }
     }

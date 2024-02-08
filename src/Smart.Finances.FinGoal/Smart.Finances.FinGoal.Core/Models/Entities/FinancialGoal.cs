@@ -63,6 +63,12 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
             IsDeleted = true;
         }
 
+        public void ValidateStatus()
+        {
+            if (Status.Equals(FinancialGoalStatus.Cancelled))
+                throw new StatusCannotBeCanceledException();
+        }
+
         private static decimal? ValidateIdealMonthySaving(decimal? idealMonthySaving)
         {
             return idealMonthySaving == 0 ? null : idealMonthySaving;
@@ -78,13 +84,5 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
             ValidateStatus();
             Update();
         }
-
-        private void ValidateStatus()
-        {
-            if (Status.Equals(FinancialGoalStatus.Cancelled))
-                throw new StatusCannotBeCanceledException();
-        }
-
-        
     }
 }
