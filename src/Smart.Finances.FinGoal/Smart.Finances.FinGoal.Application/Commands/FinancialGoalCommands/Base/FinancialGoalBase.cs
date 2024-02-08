@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Smart.Finances.FinGoal.Core.Models.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Base
 {
@@ -10,5 +11,10 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Base
         public decimal GoalAmount { get; set; }
         public DateTime? Deadline { get; set; }
         public decimal? IdealMonthySaving { get; set; }
+
+        public FinancialGoal ToEntity()
+        {
+            return new FinancialGoal(Name, GoalAmount, Deadline, IdealMonthySaving);
+        }
     }
 }

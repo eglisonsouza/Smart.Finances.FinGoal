@@ -23,6 +23,14 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
             Status = FinancialGoalStatus.InProgress;
         }
 
+        public void Update(string name, decimal goalAmount, decimal? idealMonthySaving)
+        {
+            Update();
+            Name = name;
+            GoalAmount = goalAmount;
+            IdealMonthySaving = idealMonthySaving;
+        }
+
         private static decimal? ValidateIdealMonthySaving(decimal? idealMonthySaving)
         {
             return idealMonthySaving == 0 ? null : idealMonthySaving;

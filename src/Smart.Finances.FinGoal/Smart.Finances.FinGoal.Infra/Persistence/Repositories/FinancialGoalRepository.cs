@@ -14,5 +14,15 @@ namespace Smart.Finances.FinGoal.Infra.Persistence.Repositories
         {
             return _genericRepository.AddAsync(entity);
         }
+
+        public Task<FinancialGoal?> GetById(Guid id)
+        {
+            return _genericRepository.GetByIdAsync(id);
+        }
+
+        public FinancialGoal Update(FinancialGoal entity)
+        {
+            return _genericRepository.Update(entity);
+        }
     }
 }

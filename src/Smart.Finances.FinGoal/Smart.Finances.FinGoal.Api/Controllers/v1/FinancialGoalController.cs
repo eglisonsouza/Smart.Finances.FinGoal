@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update;
 
 namespace Smart.Finances.FinGoal.Api.Controllers.v1
 {
@@ -12,6 +13,12 @@ namespace Smart.Finances.FinGoal.Api.Controllers.v1
 
         [HttpPost]
         public async Task<IActionResult> PostAsync(AddFinancialGoalCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> PutAsync(UpdateFinancialGoalCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

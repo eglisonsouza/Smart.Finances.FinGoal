@@ -5,8 +5,11 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.View
 {
     public class FinancialGoalViewModels : FinancialGoalBase
     {
-        public FinancialGoalViewModels(string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving)
+        public Guid Id { get; set; }
+
+        public FinancialGoalViewModels(Guid id, string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving)
         {
+            Id = id;
             Name = name;
             GoalAmount = goalAmount;
             Deadline = deadline;
@@ -17,6 +20,7 @@ namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.View
         {
             return new FinancialGoalViewModels
                 (
+                    id: entity.Id,
                     name: entity.Name,
                     goalAmount: entity.GoalAmount,
                     deadline: entity.Deadline,
