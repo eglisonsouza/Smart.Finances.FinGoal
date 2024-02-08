@@ -10,8 +10,27 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
         public decimal GoalAmount { get; set; }
         public DateTime? Deadline { get; set; }
         [Column(TypeName = "decimal(18,4)")]
-        public Decimal? IdealMonthySaving { get; set; }
+        public decimal? IdealMonthySaving { get; set; }
         public FinancialGoalStatus Status { get; set; }
         public IList<FinancialGoalTransactions>? Transactions { get; set; }
+
+        public FinancialGoal(string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving) : base()
+        {
+            Name = name;
+            GoalAmount = goalAmount;
+            Deadline = ValidateDeadLine(deadline);
+            IdealMonthySaving = ValidateIdealMonthySaving(idealMonthySaving);
+            Status = FinancialGoalStatus.InProgress;
+        }
+
+        private static decimal? ValidateIdealMonthySaving(decimal? idealMonthySaving)
+        {
+            return idealMonthySaving == 0 ? null : idealMonthySaving;
+        }
+
+        private static DateTime? ValidateDeadLine(DateTime? deadline)
+        {
+            return deadline!.Equals(DateTime.MinValue) ? null : deadline;
+        }
     }
 }

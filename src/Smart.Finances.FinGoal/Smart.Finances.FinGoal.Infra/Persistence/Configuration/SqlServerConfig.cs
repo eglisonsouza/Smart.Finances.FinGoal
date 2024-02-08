@@ -5,7 +5,7 @@ namespace Smart.Finances.FinGoal.Infra.Persistence.Configuration
 {
     public class SqlServerConfig
     {
-        public DbSet<FinancialGoal> FinancialGoals { get; set; }
-        public DbSet<FinancialGoalTransactions> FinancialGoalTransactions { get; set; }
+        public required DbSet<FinancialGoal> FinancialGoals { get; set; }
+        public required DbSet<FinancialGoalTransactions> FinancialGoalTransactions { get; set; }
     }
 }

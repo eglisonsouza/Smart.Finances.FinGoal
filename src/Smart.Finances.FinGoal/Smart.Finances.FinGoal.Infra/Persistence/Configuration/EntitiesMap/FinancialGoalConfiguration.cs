@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Smart.Finances.FinGoal.Core.Models.Entities;
 
 namespace Smart.Finances.FinGoal.Infra.Persistence.Configuration.EntitiesMap
 {
     public class FinancialGoalConfiguration : BaseConfiguration<FinancialGoal>
     {
-        public void Configure(EntityTypeBuilder<FinancialGoal> builder)
+        public new void Configure(EntityTypeBuilder<FinancialGoal> builder)
         {
             base.Configure(builder);
 

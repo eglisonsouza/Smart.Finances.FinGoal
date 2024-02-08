@@ -2,17 +2,24 @@
 {
     public class BaseEntity
     {
-        public Guid Id { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime? UpdatedAt { get; set; }
-        public bool IsDeleted { get; set; }
+        public Guid Id { get; private set; }
 
+        public DateTime CreatedAt { get; private set; }
 
-        public BaseEntity()
+        public DateTime? UpdatedAt { get; private set; }
+
+        public bool IsDeleted { get; private set; }
+
+        protected BaseEntity()
         {
             Id = Guid.NewGuid();
             CreatedAt = DateTime.Now;
             IsDeleted = false;
+        }
+
+        protected void Update()
+        {
+            UpdatedAt = DateTime.Now;
         }
     }
 }
