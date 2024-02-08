@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus.Commands;
 
@@ -40,6 +41,12 @@ namespace Smart.Finances.FinGoal.Api.Controllers.v1
         public async Task<IActionResult> HoldAsync(Guid id)
         {
             return Ok(await _mediator.Send(new HoldFinancialGoalCommand(id)));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAsync(Guid id)
+        {
+            return Ok(await _mediator.Send(new DeleteFinancialGoalCommand(id)));
         }
     }
 }

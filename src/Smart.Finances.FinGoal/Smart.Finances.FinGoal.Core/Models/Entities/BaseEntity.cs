@@ -2,13 +2,13 @@
 {
     public class BaseEntity
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; protected set; }
 
-        public DateTime CreatedAt { get; private set; }
+        public DateTime CreatedAt { get; protected set; }
 
-        public DateTime? UpdatedAt { get; private set; }
+        public DateTime? UpdatedAt { get; protected set; }
 
-        public bool IsDeleted { get; private set; }
+        public bool IsDeleted { get; protected set; }
 
         protected BaseEntity()
         {
