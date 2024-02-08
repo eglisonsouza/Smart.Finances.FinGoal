@@ -5,14 +5,14 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
 {
     public class FinancialGoal : BaseEntity
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
         [Column(TypeName = "decimal(18,4)")]
-        public decimal GoalAmount { get; set; }
-        public DateTime? Deadline { get; set; }
+        public decimal GoalAmount { get; private set; }
+        public DateTime? Deadline { get; private set; }
         [Column(TypeName = "decimal(18,4)")]
-        public decimal? IdealMonthySaving { get; set; }
-        public FinancialGoalStatus Status { get; set; }
-        public IList<FinancialGoalTransactions>? Transactions { get; set; }
+        public decimal? IdealMonthySaving { get; private set; }
+        public FinancialGoalStatus Status { get; private set; }
+        public IList<FinancialGoalTransactions>? Transactions { get; private set; }
 
         public FinancialGoal(string name, decimal goalAmount, DateTime? deadline, decimal? idealMonthySaving) : base()
         {
@@ -29,6 +29,26 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
             Name = name;
             GoalAmount = goalAmount;
             IdealMonthySaving = idealMonthySaving;
+        }
+
+        public void Cancell()
+        {
+            Status = FinancialGoalStatus.Cancelled;
+        }
+
+        public void Hold()
+        {
+            Status = FinancialGoalStatus.OnHold;
+        }
+
+        public void Completed()
+        {
+            Status = FinancialGoalStatus.Completed;
+        }
+
+        public void Back()
+        {
+            Status = FinancialGoalStatus.InProgress;
         }
 
         private static decimal? ValidateIdealMonthySaving(decimal? idealMonthySaving)
