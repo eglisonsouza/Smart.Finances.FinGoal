@@ -2,7 +2,7 @@
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Base;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels;
 
-namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update
+namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Update
 {
     public class UpdateFinancialGoalCommand : FinancialGoalBase, IRequest<FinancialGoalViewModel>
     {

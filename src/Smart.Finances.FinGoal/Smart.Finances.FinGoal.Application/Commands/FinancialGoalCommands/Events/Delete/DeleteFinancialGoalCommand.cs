@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels;
 
-namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete
+namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Delete
 {
     public class DeleteFinancialGoalCommand(Guid id) : IRequest<FinancialGoalViewModel>
     {

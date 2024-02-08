@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus.Commands;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.UpdateStatus.Commands;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels;
 using Smart.Finances.FinGoal.Core.Exceptions;
 using Smart.Finances.FinGoal.Core.Models.Entities;
 using Smart.Finances.FinGoal.Core.Repositories;
 
-namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus
+namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.UpdateStatus
 {
     public class UpdateStatusFinancialGoalHandler(IFinancialGoalRepository repository) :
         IRequestHandler<CancellFinancialGoalCommand, FinancialGoalViewModel>,

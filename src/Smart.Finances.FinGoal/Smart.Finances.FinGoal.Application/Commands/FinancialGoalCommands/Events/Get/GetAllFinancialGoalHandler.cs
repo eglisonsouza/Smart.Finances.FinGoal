@@ -2,7 +2,7 @@
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewModels;
 using Smart.Finances.FinGoal.Core.Repositories;
 
-namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Get
+namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Get
 {
     public class GetAllFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<GetAllFinancialGoalCommand, IList<FinancialGoalViewModel>>
     {

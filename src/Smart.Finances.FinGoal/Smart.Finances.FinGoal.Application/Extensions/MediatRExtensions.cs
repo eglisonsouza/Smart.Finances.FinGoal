@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Add;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Delete;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Update;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.UpdateStatus;
 using System.Reflection;
 
 namespace Smart.Finances.FinGoal.Application.Extensions

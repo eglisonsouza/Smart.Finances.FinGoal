@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Add;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Add;
+using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Update;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Get;
-using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Update;
 using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.UpdateStatus.Commands;
 
 namespace Smart.Finances.FinGoal.Api.Controllers.v1

@@ -3,17 +3,19 @@ using Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.ViewMode
 using Smart.Finances.FinGoal.Core.Exceptions;
 using Smart.Finances.FinGoal.Core.Repositories;
 
-namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Delete
+namespace Smart.Finances.FinGoal.Application.Commands.FinancialGoalCommands.Events.Update
 {
-    public class DeleteFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<DeleteFinancialGoalCommand, FinancialGoalViewModel>
+    public class UpdateFinancialGoalHandler(IFinancialGoalRepository repository) : IRequestHandler<UpdateFinancialGoalCommand, FinancialGoalViewModel>
     {
         private readonly IFinancialGoalRepository _repository = repository;
 
-        public async Task<FinancialGoalViewModel> Handle(DeleteFinancialGoalCommand request, CancellationToken cancellationToken)
+        public async Task<FinancialGoalViewModel> Handle(UpdateFinancialGoalCommand request, CancellationToken cancellationToken)
         {
             var entity = await _repository.GetById(request.Id) ?? throw new EntityNotFoundException();
-            entity.Deleted();
+
+            entity.Update(request.Name, request.GoalAmount, request.IdealMonthySaving);
             _repository.Update(entity);
+
             return FinancialGoalViewModel.FromEntity(entity);
         }
     }
