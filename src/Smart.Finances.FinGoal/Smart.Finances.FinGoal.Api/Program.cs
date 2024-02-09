@@ -1,25 +1,27 @@
+using Smart.Essentials.Filters;
 using Smart.Finances.FinGoal.Application.Extensions;
 using Smart.Finances.FinGoal.Infra.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddInfraestructure(builder.Configuration);
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddMediatRDependencies();
+builder.Services.AddInfraestructure(builder.Configuration)
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .AddMediatRDependencies()
+    .AddControllers(options => options.Filters.Add(typeof(DefaultExceptionFilterAttribute)));
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app
+        .UseSwagger()
+        .UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app
+    .UseHttpsRedirection()
+    .UseAuthorization();
 
 app.MapControllers();
 
