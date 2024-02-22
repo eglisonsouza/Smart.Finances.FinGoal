@@ -1,6 +1,5 @@
 ﻿using Smart.Finances.FinGoal.Core.Exceptions;
 using Smart.Finances.FinGoal.Core.Models.Entities;
-using Smart.Finances.FinGoal.Core.Models.Enuns;
 using Smart.Finances.FinGoal.Core.Repositories;
 using Smart.Finances.FinGoal.Core.Service;
 
@@ -18,14 +17,12 @@ namespace Smart.Finances.FinGoal.Application.Services.OperationTransaction
         {
             var financialEntity = await _repositoryFinancialGoal.GetById(transaction.FinancialGoalId) ?? throw new EntityNotFoundException();
 
-            if (!financialEntity.Status.Equals(FinancialGoalStatus.InProgress))
+            if (financialEntity.StatusDifferentInProgress())
                 throw new StatusNeedsToBeInProgressException();
 
             await transactionService.Process();
 
-            var transactionEntity = await _repositoryTransactionOperation.AddAsync(transaction);
-
-            return transactionEntity;
+            return await _repositoryTransactionOperation.AddAsync(transaction);
         }
     }
 }

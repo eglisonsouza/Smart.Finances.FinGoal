@@ -18,6 +18,7 @@ namespace Smart.Finances.FinGoal.Application.Commands.TransactionCommands.Events
             return TransactionViewModel.FromEntity(transaction);
         }
 
+
         public async Task<TransactionViewModel> Handle(WithdrawTransactionCommand request, CancellationToken cancellationToken)
         {
             var transaction = await _service.Process(new WithdrawTransactionService(), request.ToEntity().Withdraw());

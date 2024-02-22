@@ -69,6 +69,11 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
                 throw new StatusCannotBeCanceledException();
         }
 
+        public bool StatusDifferentInProgress()
+        {
+            return !Status.Equals(FinancialGoalStatus.InProgress);
+        }
+
         private static decimal? ValidateIdealMonthySaving(decimal? idealMonthySaving)
         {
             return idealMonthySaving == 0 ? null : idealMonthySaving;

@@ -1,5 +1,7 @@
-﻿using Smart.Finances.FinGoal.Core.Models.Enuns;
+﻿using Smart.Finances.FinGoal.Core.Exceptions;
+using Smart.Finances.FinGoal.Core.Models.Enuns;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Transactions;
 
 namespace Smart.Finances.FinGoal.Core.Models.Entities
 {
@@ -9,11 +11,13 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
         public decimal Amount { get; private set; }
         public DateTime TransactionDate { get; private set; }
         public TransactionType TransactionType { get; private set; }
-        public FinancialGoal FinancialGoal { get; private set; }
+        public FinancialGoal? FinancialGoal { get; private set; }
         public Guid FinancialGoalId { get; private set; }
 
         public FinancialGoalTransactions(decimal amount, DateTime transactionDate, Guid financialGoalId) : base()
         {
+            ValidAmount();
+            
             Amount = amount;
             TransactionDate = transactionDate;
             FinancialGoalId = financialGoalId;
@@ -29,6 +33,12 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
         {
             TransactionType = TransactionType.Withdraw;
             return this;
+        }
+
+        private void ValidAmount()
+        {
+            if (Amount <= 0)
+                throw new AmountIsInvalidException();
         }
     }
 }
