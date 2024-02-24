@@ -10,7 +10,6 @@ namespace Smart.Finances.FinGoal.Application.Commands.TransactionCommands.Events
         IRequestHandler<WithdrawTransactionCommand, TransactionViewModel>
     {
         private readonly ITransactionService _service = service;
-
         public async Task<TransactionViewModel> Handle(DepositTransactionCommand request, CancellationToken cancellationToken)
         {
             var transaction = await _service.Process(new DepositTransactionService(), request.ToEntity().Deposit());

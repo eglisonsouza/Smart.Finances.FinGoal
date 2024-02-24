@@ -1,15 +1,18 @@
-﻿using Smart.Finances.FinGoal.Core.Service;
+﻿using Smart.Finances.FinGoal.Core.Models.Entities;
+using Smart.Finances.FinGoal.Core.Service;
 
 namespace Smart.Finances.FinGoal.Application.Services.OperationTransaction
 {
-    public class WithdrawTransactionService : IOperationTransactionService
+    public class WithdrawTransactionService() : IOperationTransactionService
     {
-        public async Task Process()
+        public void Process(FinancialGoalTransactions transaction, ref decimal balance)
         {
-            //verificar se tem valor no saldo
-            //se sim, atualizar saldo
-            //senão lança exception
-            Console.WriteLine("Withdraw");
+            if (transaction.Amount > balance)
+            {
+                throw new Exception("Amount is invalid");
+            }
+
+            balance -= transaction.Amount;
         }
     }
 }

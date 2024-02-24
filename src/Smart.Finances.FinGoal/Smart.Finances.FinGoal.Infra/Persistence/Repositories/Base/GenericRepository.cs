@@ -17,7 +17,7 @@ namespace Smart.Finances.FinGoal.Infra.Persistence.Repositories.Base
         public async Task<TEntity> AddAsync(TEntity entity)
         {
             var result = await _dbSet.AddAsync(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return result.Entity;
         }
 

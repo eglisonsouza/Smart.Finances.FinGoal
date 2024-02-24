@@ -1,17 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Smart.Finances.FinGoal.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class AddEntities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "FinancialGoal",
+                name: "FinancialGoals",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -26,7 +27,7 @@ namespace Smart.Finances.FinGoal.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FinancialGoal", x => x.Id);
+                    table.PrimaryKey("PK_FinancialGoals", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -46,9 +47,9 @@ namespace Smart.Finances.FinGoal.Infra.Migrations
                 {
                     table.PrimaryKey("PK_FinancialGoalTransactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FinancialGoalTransactions_FinancialGoal_FinancialGoalId",
+                        name: "FK_FinancialGoalTransactions_FinancialGoals_FinancialGoalId",
                         column: x => x.FinancialGoalId,
-                        principalTable: "FinancialGoal",
+                        principalTable: "FinancialGoals",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -66,7 +67,7 @@ namespace Smart.Finances.FinGoal.Infra.Migrations
                 name: "FinancialGoalTransactions");
 
             migrationBuilder.DropTable(
-                name: "FinancialGoal");
+                name: "FinancialGoals");
         }
     }
 }

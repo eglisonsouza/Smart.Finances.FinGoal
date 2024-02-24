@@ -16,11 +16,11 @@ namespace Smart.Finances.FinGoal.Core.Models.Entities
 
         public FinancialGoalTransactions(decimal amount, DateTime transactionDate, Guid financialGoalId) : base()
         {
-            ValidAmount();
-            
             Amount = amount;
             TransactionDate = transactionDate;
             FinancialGoalId = financialGoalId;
+
+            ValidAmount();
         }
 
         public FinancialGoalTransactions Deposit()

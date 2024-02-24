@@ -5,5 +5,6 @@ namespace Smart.Finances.FinGoal.Core.Repositories
     public interface ITransactionOperationRepository
     {
         Task<FinancialGoalTransactions> AddAsync(FinancialGoalTransactions transaction);
+        Task<List<FinancialGoalTransactions>> GetAll(Guid financialGoalId);
     }
 }

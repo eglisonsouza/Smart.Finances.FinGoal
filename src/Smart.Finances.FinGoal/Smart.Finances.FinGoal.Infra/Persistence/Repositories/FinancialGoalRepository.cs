@@ -6,7 +6,7 @@ using Smart.Finances.FinGoal.Infra.Persistence.Repositories.Base;
 
 namespace Smart.Finances.FinGoal.Infra.Persistence.Repositories
 {
-    public class FinancialGoalRepository(SqlServerDbContext<SqlServerConfig> context) : IFinancialGoalRepository
+    public class FinancialGoalRepository(SqlServerDbContext context) : IFinancialGoalRepository
     {
         private readonly GenericRepository<FinancialGoal> _genericRepository = new(context);
 

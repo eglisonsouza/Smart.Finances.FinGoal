@@ -1,7 +1,9 @@
-﻿namespace Smart.Finances.FinGoal.Core.Service
+﻿using Smart.Finances.FinGoal.Core.Models.Entities;
+
+namespace Smart.Finances.FinGoal.Core.Service
 {
     public interface IOperationTransactionService
     {
-        Task Process();
+        void Process(FinancialGoalTransactions transaction, ref decimal balance);
     }
 }
