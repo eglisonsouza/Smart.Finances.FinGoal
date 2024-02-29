@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddInfraestructure(builder.Configuration)
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
-    .AddMediatRDependencies()
+    .AddApplicationDependencies()
     .AddControllers(options => options.Filters.Add(typeof(DefaultExceptionFilterAttribute)));
 
 var app = builder.Build();
